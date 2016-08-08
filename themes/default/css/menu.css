@@ -1,0 +1,134 @@
+.sticky
+{
+	width:100%;
+	position: fixed;
+	left:0;
+	top:0;
+	z-index: 100;
+}
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family:arial;
+
+}
+
+header {
+width:100%;
+ float:left;
+	height:100px;
+	background:#FFFFFF;
+	color:#fff;
+}
+
+#btn-menu {
+	display:none;
+}
+
+header label {
+	font-size:30px;
+	cursor:pointer;
+	color: #000;
+	display:none;
+
+}
+
+header nav {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 100;
+
+
+}
+
+.menu ul {
+	background:#FFFFFF;
+	display:flex;
+	list-style:none;
+	border-radius: 5px;	
+
+}
+
+.menu ul ul {
+	display:none;
+	border: 1px solid #000000;
+}
+
+.menu a {
+	display:block;
+	padding:5px 20px;
+	color:#000;
+	text-decoration:none;
+}
+
+.menu a:hover {
+	background-color: #0967DE;
+	color:#FFF;
+	border-radius: 3px;
+}
+
+.menu a span {
+	margin-left:10px;
+}
+
+.menu ul li:hover ul {
+	background: #FFF;
+	display:block;
+	position:absolute;
+	z-index: 100;
+}
+
+
+
+@media (max-width:768px) {
+	header label {
+		display:block;
+	}
+
+	.menu {
+		position:absolute;
+		top:50px;
+		left:0;
+		width:100%;
+		transform:translateX(-100%);
+		transition:all 0.3s;
+	}
+
+	.menu ul {
+		display:block;
+		background:#fff;
+	}
+
+	.menu ul li:target ul {
+		display:block;
+		width: 100%;
+		position: static;
+	}
+
+	.menu ul li:hover ul {
+		display:block;
+		width: 100%;
+		position: static;
+	}
+
+	
+	.menu a span {
+
+	}
+
+	#btn-menu:checked ~ .menu {
+		transform:translateX(0%);
+	}
+
+	.menu ul ul {
+		background: #fff;
+	}
+
+	.menu ul ul a {
+		padding:  5px 35px;
+	}
+	
+}

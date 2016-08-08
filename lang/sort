@@ -1,0 +1,67 @@
+
+
+
+
+
+
+
+
+
+?>
+<?php
+$_SESSION['lg_add_page']="Dodaj stronę";
+$_SESSION['lg_add_section']="Dodaj sekcję";
+$_SESSION['lg_add_section_gallery']="Dodaj sekcję Galerii";
+$_SESSION['lg_add_section_html']="Dodaj sekcję WYSIWYG";
+$_SESSION['lg_add_subcategory']="Dodaj podkategorię";
+$_SESSION['lg_advenced_settings']="Ustawienia Zaawansowane";
+$_SESSION['lg_analytics_us_code']="Kod UA Google Analytics";
+$_SESSION['lg_back_to_system_panel']="Wróć do panelu Admina";
+$_SESSION['lg_cancel']="Wyjdź bez zapisywania";
+$_SESSION['lg_change_icon']="Zmień ikonę";
+$_SESSION['lg_change_lang']="Zmień język (lang)";
+$_SESSION['lg_change_menu_style']="Zmień styl menu";
+$_SESSION['lg_change_passwd']="Zmiana hasła";
+$_SESSION['lg_cms_settings']="Ustawienia CMS";
+$_SESSION['lg_confirm']="Potwierdź";
+$_SESSION['lg_cookies_bar_is_off']="Pasek Cookie jest wyłączony";
+$_SESSION['lg_cookies_bar_is_on']="Pasek Cookie jest włączony";
+$_SESSION['lg_cookies_terms']="Polityka plików cookie";
+$_SESSION['lg_delete']="Usuń";
+$_SESSION['lg_disable']="Wyłącz";
+$_SESSION['lg_edit']="Edycja";
+$_SESSION['lg_enable']="Włącz";
+$_SESSION['lg_exist_new_update']="Dostępne nowe Aktualizacje";
+$_SESSION['lg_footer']="Stopka";
+$_SESSION['lg_general_settings']="Ustawienia Główne";
+$_SESSION['lg_google_analytics_is_off']="Statystyki Google Analyticss są wyłączone";
+$_SESSION['lg_google_analytics_is_on']="Statystyki Google Analyticss są włączone";
+$_SESSION['lg_header']="Nagłówek";
+$_SESSION['lg_login_and_create']="Login and create your site";
+$_SESSION['lg_login']="Zaloguj";
+$_SESSION['lg_logout']="Wyloguj";
+$_SESSION['lg_move_down']="Przenieś w dół";
+$_SESSION['lg_move_up']="Przenieś w górę";
+$_SESSION['lg_new_password_confirm']="Potwierdź hasło";
+$_SESSION['lg_new_password']="Nowe hasło";
+$_SESSION['lg_old_password']="Stare hasło";
+$_SESSION['lg_passwd']="Password";
+$_SESSION['lg_plugins']="Wtyczki";
+$_SESSION['lg_preview']="Podgląd";
+$_SESSION['lg_remove_category']="Usuń Kategorię";
+$_SESSION['lg_remove_page']="Usuń Stronę";
+$_SESSION['lg_remove_section']="Usuń sekcję";
+$_SESSION['lg_rename']="Zmień nazwę";
+$_SESSION['lg_save_and_quit']="Zapisz i wyjdź";
+$_SESSION['lg_save']="Zapisz";
+$_SESSION['lg_select_cookie_bar_style']="Wybierz styl paska cookie";
+$_SESSION['lg_select_jpg_file']="wybierz plik jpg";
+$_SESSION['lg_site_map']="Mapa Strony";
+$_SESSION['lg_site_type']="Typ Strony";
+$_SESSION['lg_text_on_cookies_bar']="Tekst na pasku cookie";
+$_SESSION['lg_update']="Aktualizuj";
+$_SESSION['lg_updates']="Aktualizacje";
+$_SESSION['lg_update_to_version']="Aktualizuj do wersji";
+$_SESSION['lg_up_to_date']="Twoja wersja jest aktualna";
+$_SESSION['lg_websiite_description']="Opis strony";
+$_SESSION['lg_website_title']="Nazwa Strony";

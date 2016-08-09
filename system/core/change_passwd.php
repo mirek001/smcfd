@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+  session_start(); 
+} 
 if (!isset($_SESSION['id'])) exit();
 require '../../mysql_data.php';
 
@@ -22,6 +25,6 @@ if ($new_pass==$pass_confirm){
 
 } else $_SESSION['note']="Password incorrect!";
 
-header("Location:../../system.php?page=general_settings");
+header("Location:../../system.php?page=users");
 
 ?>

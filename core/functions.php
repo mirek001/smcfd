@@ -45,29 +45,39 @@ else echo "";
 if (!function_exists("show_meta_title")){
 function show_meta_title($id){
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
-if (isset($id)) {
+$page_title='';
+if (isset($id)&&$id!=0) {
 $res = $con->query($q=("SELECT *  FROM site_map WHERE id=$id"));
 mysqli_close($con);
 	$row = mysqli_fetch_array($res);
-	$title = $row['name'];
+	$page_title = $row['name'];
 }
-else {
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 $res = $con->query($q=("SELECT *  FROM settings WHERE name='meta_title'"));
 mysqli_close($con);
 	$row = mysqli_fetch_array($res);
-	$title = $row['value'];
-	$title = html_entity_decode($title);
-}
-	echo "\t<title>$title</title>\n";
+	$site_title = $row['value'];
+	$site_title = html_entity_decode($site_title);
+	if ($id!=0) {$page_title=" - $page_title";}
+	echo "\t<title>$site_title"."$page_title</title>\n";
 }}
 
 if (!function_exists("show_meta_description")){
 function show_meta_description($id){
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
+$res = $con->query($q=("SELECT *  FROM site_map WHERE id='$id'"));
+mysqli_close($con);
+	$row = mysqli_fetch_array($res);
+	$page_description = NULL;
+	$page_description = $row['meta_desc'];
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 $res = $con->query($q=("SELECT *  FROM settings WHERE name='meta_description'"));
 mysqli_close($con);
 	$row = mysqli_fetch_array($res);
 	$description = $row['value'];
+	if ($page_description!=NULL){
+		$description=$description." - ".$page_description;
+	}
 	$description = html_entity_decode($description);
 	echo '	<meta name=”description” content=”'.$description.'”>'."\n";
 }}
@@ -75,12 +85,21 @@ mysqli_close($con);
 if (!function_exists("show_meta_keywords")){
 function show_meta_keywords($id){
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
+$res = $con->query($q=("SELECT *  FROM site_map WHERE id='$id'"));
+mysqli_close($con);
+	$row = mysqli_fetch_array($res);
+	$page_keywords = NULL;
+	$page_keywords = $row['meta_keywords'];
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 $res = $con->query($q=("SELECT *  FROM settings WHERE name='meta_keywords'"));
 mysqli_close($con);
 	$row = mysqli_fetch_array($res);
-	$description = $row['value'];
-	$description = html_entity_decode($description);
-	echo '	<meta name=”keywords” content=”'.$description.'”>'."\n";
+	$keywords = $row['value'];
+	if ($page_keywords!=NULL){
+		$keywords=$keywords.", ".$page_keywords;
+	}
+	$keywords = html_entity_decode($keywords);
+	echo '	<meta name=”keywords” content=”'.$keywords.'”>'."\n";
 }}
 
 if (!function_exists("show_gallery")){

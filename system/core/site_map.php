@@ -202,6 +202,7 @@ $lang_delete=$_SESSION['lg_delete'];
 $lang_add_section_html=$_SESSION['lg_add_section_html'];
 $lang_add_section_gallery=$_SESSION['lg_add_section_gallery'];
 $lang_add_section=$_SESSION['lg_add_section'];
+$lang_advenced_edit=$_SESSION['lg_advenced_edit'];
 $confirm=$_SESSION['lg_confirm'];
 $remove_page=$_SESSION['lg_remove_page'];
 $lang_hide=$_SESSION['lg_hide'];
@@ -225,6 +226,7 @@ return<<<END
                   </ul>
             </li>
       <li><a href="system.php?edit=$id#section-$id">$lang_rename</a></li>
+      <li><a href="system.php?page=edit_meta_data&id=$id">$lang_advenced_edit</a></li>
       <li><a href="#" data-toggle="modal" data-target="#url-$id">$lang_show_url</a></li>
       <li role="separator" class="divider"></li>
       <li><a href="system/core/move_up_down.php?id=$id&action=move_up">$lang_move_up</a></li>

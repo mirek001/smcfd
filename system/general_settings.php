@@ -13,10 +13,7 @@ $website_address = $row['value'];
 
 
 
-make_thumb("images/favicon-src.jpg", "images/favicon.jpg", '32');
 
-$lang_change_icon=$_SESSION['lg_change_icon'];
-$lang_select_jpg_file=$_SESSION['lg_select_jpg_file'];
 
 
 ?>
@@ -29,18 +26,6 @@ echo<<<END
 <div style="overflow:auto;">
 <div style="width:30%; float:left" class="form-group">
 
-</div>
-<div style="width:40%; float:left;" class="form-group">
-<span style="text-align:right;  float:left;"><img src="images/favicon.jpg"></span>
-<form role="form" class="form-inline" action="system/core/favicon_upload.php" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-	<input  class="btn btn-default" type="file" name="fileToUpload" id="fileToUpload">
-    </div>
-    <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="$lang_change_icon" name="submit">
-    </div>
-</form>
-<center><small>*- $lang_select_jpg_file</small></center>
 </div>
 
 <div style="width:30%; float:right;" class="form-group">

@@ -3,9 +3,6 @@
 $con = mysqli_connect($_SESSION['HOST'], $_SESSION['LOGIN'], $_SESSION['PASSWD'], $_SESSION['DB']);
 $res = $con->query($q=("SELECT * FROM site_map WHERE cat_id=1 AND hidden='0' AND disabled='0' ORDER BY position")); 
 
-if ($CONFIG['developer_mode']!=1){
-echo '<nav class="menu">'."\n";
-}        
 echo "\t<ul>\n";
     while ($row = mysqli_fetch_array($res)) {
         if ($row['type']=="category"){
@@ -24,9 +21,6 @@ echo "\t<ul>\n";
 
     }
 echo "\t\t</ul>\n";
-if ($CONFIG['developer_mode']!=1){
-echo '</nav>';
-}   
 
 function show_menu($id){
 $con = mysqli_connect($_SESSION['HOST'], $_SESSION['LOGIN'], $_SESSION['PASSWD'], $_SESSION['DB']);

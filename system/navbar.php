@@ -17,13 +17,9 @@
           <ul class="dropdown-menu">
             <li><a href="system.php?page=site_map"><?php echo $_SESSION['lg_site_map']?></a></li>
             <li><a href="system.php?page=general_settings"><?php echo $_SESSION['lg_general_settings']?></a></li>
+            <li><a href="system.php?page=users"><?php echo $_SESSION['lg_users']?></a></li>
             <li class="divider"></li>
-            <li class="dropdown-submenu">
-                  <a href="#"><?php echo $_SESSION['lg_advenced_settings']?></a>
-                  <ul class="dropdown-menu">
-                  <li><a href="system.php?page=menu_css">CSS Menu</a></li>
-                  </ul>
-            </li>
+
             <li class="dropdown-submenu">
                   <a href="#"><?php echo $_SESSION['lg_plugins']?></a>
                   <ul class="dropdown-menu">

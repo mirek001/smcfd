@@ -1,17 +1,24 @@
 <?php
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
+$res = $con->query($q=("SELECT *  FROM settings WHERE name='show_cookies_bar'"));
+$row = mysqli_fetch_array($res);
+$show = $row['int_value'];
+
+if ($show==1){
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
+$res = $con->query($q=("SELECT *  FROM settings WHERE name='cookies_bar_pos'"));
+$row = mysqli_fetch_array($res);
+$position = $row['int_value'];
+
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 $res = $con->query($q=("SELECT *  FROM site_map WHERE type='cookie_terms'"));
 $row = mysqli_fetch_array($res);
 
 $id = $row['id'];
-$position = $row['int_value'];
 $description = $row['description'];
-$hidden = $row['hidden'];
-?>
-<?php  /// wybór wyglądu cookie
 
 
-if ($position=='1' AND $hidden=='0') {
+if ($position=='1') {
 echo<<<END
 <!-- Cookies Bar Code START -->
 \t<script type="text/javascript">
@@ -21,7 +28,7 @@ echo<<<END
 <!-- Cookies Bar Code END -->\n
 END;
 }
-else if ($position=='2' AND $hidden=='0') {
+else if ($position=='2') {
 echo<<<END
 <!-- Cookies Bar Code START -->
 \t<script type="text/javascript">
@@ -31,7 +38,7 @@ echo<<<END
 <!-- Cookies Bar Code END -->\n
 END;
 }
-else if ($position=='3' AND $hidden=='0') {
+else if ($position=='3') {
 echo<<<END
 <!-- Cookies Bar Code START -->
 \t<script type="text/javascript">
@@ -41,7 +48,7 @@ echo<<<END
 <!-- Cookies Bar Code END -->\n
 END;
 }
-else if ($position=='4' AND $hidden=='0') {
+else if ($position=='4') {
 echo<<<END
 <!-- Cookies Bar Code START -->
 \t<script type="text/javascript">
@@ -52,5 +59,5 @@ echo<<<END
 END;
 }
 else echo "";
-
+}
 ?>

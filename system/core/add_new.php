@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+  session_start(); 
+} 
 if (!isset($_SESSION['id'])) exit();
 
 require_once '../../mysql_data.php';

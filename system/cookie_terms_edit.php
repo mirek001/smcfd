@@ -1,18 +1,25 @@
 <?php
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
+$res = $con->query($q=("SELECT *  FROM settings WHERE name='show_cookies_bar'"));
+$row = mysqli_fetch_array($res);
+$hidden = $row['int_value'];
+
+$con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
+$res = $con->query($q=("SELECT *  FROM settings WHERE name='cookies_bar_pos'"));
+$row = mysqli_fetch_array($res);
+$position = $row['int_value'];
+
 
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 $res = $con->query($q=("SELECT *  FROM site_map WHERE type='cookie_terms'"));
 $row = mysqli_fetch_array($res);
-
 $id = $row['id'];
-$position = $row['int_value'];
-$hidden = $row['hidden'];
-$description = $row['description'];
+$description = $row['meta_desc'];
 $content = $row['content'];
 
 
 
-if ($hidden=="1"){
+if ($hidden=="0"){
 	$disabled="disabled";
 }
 else $disabled="";
@@ -93,10 +100,10 @@ if ($no==$position) return "selected";
 }
 
 function enable_disable_cookies_settings($id, $hidden) {
-	if ($hidden=="0"){
-		echo "<a href=\"system/core/enable_disable_cookie_bar.php?id=$id&hidden=1\" class=\"btn btn-success btn\" role=\"button\">".$_SESSION['lg_cookies_bar_is_on']."</a>";
+	if ($hidden=="1"){
+		echo "<a href=\"system/core/enable_disable_cookie_bar.php?id=$id&hidden=0\" class=\"btn btn-success btn\" role=\"button\">".$_SESSION['lg_cookies_bar_is_on']."</a>";
 	}
-	else echo "<a href=\"system/core/enable_disable_cookie_bar.php?id=$id&hidden=0\" class=\"btn btn-danger btn\" role=\"button\">".$_SESSION['lg_cookies_bar_is_off']."</a>";
+	else echo "<a href=\"system/core/enable_disable_cookie_bar.php?id=$id&hidden=1\" class=\"btn btn-danger btn\" role=\"button\">".$_SESSION['lg_cookies_bar_is_off']."</a>";
 
 }
 

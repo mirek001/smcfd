@@ -8,4 +8,15 @@ if ($facebook_show=='1') require_once 'facebook.php';
 
 show_google_analytics();
 
+$js_dir = $home_url.'js/body';
+if (is_dir($js_dir)) {
+   if ($dh = opendir($js_dir)) {
+       while (($file = readdir($dh)) !== false) {
+       		if ($file != "." && $file != "..") { 
+				echo '	<script src="'.$home_url.'js/body/'.$file.'"></script>'."\n\r";
+       } 
+       }
+       closedir($dh);
+   }
+}
 ?>

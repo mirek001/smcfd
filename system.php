@@ -47,6 +47,7 @@ require_once 'functions.php';
 	<link href="css/bootstrap.css" rel="stylesheet">
   	<link href="css/bootstrap-formhelpers.css" rel="stylesheet">
   	<link href="system/css/raw.css" rel="stylesheet" type="text/css">
+    <link href="./css/ace.css" rel="stylesheet" type="text/css">
   	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="css/lightbox.css">
 

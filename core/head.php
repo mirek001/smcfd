@@ -14,7 +14,7 @@ echo '	<meta author="'.$CONFIG['meta_author'].'">'."\n";?>
 <?php require_once './cookies_bar.php';?>
 <?php 
 $css_dir = $home_url.'css';
-$js_dir = $home_url.'js';
+$js_dir = $home_url.'js/head';
 
 // Open a known directory, and proceed to read its contents
 if (is_dir($css_dir)) {
@@ -31,7 +31,7 @@ if (is_dir($js_dir)) {
    if ($dh = opendir($js_dir)) {
        while (($file = readdir($dh)) !== false) {
        		if ($file != "." && $file != "..") { 
-				echo '	<script src="'.$home_url.'css/'.$file.'"></script>'."\n\r";
+				echo '	<script src="'.$home_url.'js/head/'.$file.'"></script>'."\n\r";
        } 
        }
        closedir($dh);

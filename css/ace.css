@@ -1,0 +1,6 @@
+#ace-editor { 
+font-size: 8px;
+resize:vertical;
+ max-height:300px; 
+ min-height:200px;
+}

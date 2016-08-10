@@ -9,8 +9,6 @@ require_once '../../mysql_data.php';
 
 $name=$_GET['name'];
 $name = htmlentities($name, ENT_QUOTES, "UTF-8");
-//$desc=$_GET['desc'];
-//$desc = htmlentities($desc, ENT_QUOTES, "UTF-8");
 $content=$_GET['content'];
 $content = htmlentities($content, ENT_QUOTES, "UTF-8");
 $id=$_GET['id'];
@@ -22,7 +20,7 @@ $section_color = htmlentities($section_color, ENT_QUOTES, "UTF-8");
 
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 
-			$con->query($q=("UPDATE site_map SET name='$name', description='$desc', content='$content', section_color='$section_color' WHERE id=$id"));
+			$con->query($q=("UPDATE site_map SET name='$name', content='$content', section_color='$section_color' WHERE id=$id"));
 			//echo $q;
 			$res = $con->query("SELECT MAX(id) AS max_id FROM pages");
 			$row = mysqli_fetch_array($res);

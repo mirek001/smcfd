@@ -7,7 +7,7 @@ $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$
 $res = $con->query($q=("SELECT *  FROM site_map WHERE id=$id"));
 $row = mysqli_fetch_array($res);
 $page_name = $row['name'];
-$page_desc = $row['description'];
+$page_desc = $row['meta_desc'];
 $page_content = $row['content'];
 $section_color = $row['section_color'];
 ?>

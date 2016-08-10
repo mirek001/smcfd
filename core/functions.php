@@ -104,58 +104,27 @@ mysqli_close($con);
 
 if (!function_exists("show_gallery")){
 function show_gallery($id, $section_color){
-$developer=0;
-global $developer;
-	$con = mysqli_connect($_SESSION['HOST'], $_SESSION['LOGIN'], $_SESSION['PASSWD'], $_SESSION['DB']);
-	$res = $con->query("SELECT * FROM gallery WHERE sm_id= $id");
-	mysqli_close($con);
-				$row = mysqli_fetch_array($res);
-				$num_columns = $row['num_columns'];
-				$thumb_width = $row['thumb_width'];
-				$border = $row['border'];
-				$border_radius = $row['border_radius'];
-				$padding = $row['padding'];
-
-$katalog    = "upload/$id/"; 
-$pliki = scandir($katalog); 
-
+global $CONFIG;
+$folder = "upload/$id/"; 
+$files = scandir($folder); 
+$num_columns=$CONFIG['gallery_numcolumns'];
 $i=0;
-if ($developer!=1){
-echo "<div style=\"background-color:$section_color;\"  >";
-} else echo '<div id="gallery" >'."\n";
-if ($developer!=1){
-echo "<center><table><tr>";
-} else echo "<table>\n\t<tr>\n";
+echo '<div class="gallery" >'."\n";
+echo "<table>\n\t<tr>\n";
 
-foreach($pliki as $plik) {
-	if ($plik=="." || $plik=="..") {
-		echo "";
-	}
-	else if ($plik=="thumb") {
-		echo "";
-	}
-	else {
-	$sciezka = "upload/$id/$plik";
-	$sciezka_thumb = "upload/$id/thumb/$plik";
+foreach($files as $file) {
+	if ($file!="." && $file!=".." && $file!="thumb"){
+	$sciezka = "upload/$id/$file";
+	$sciezka_thumb = "upload/$id/thumb/$file";
 
 	if ($i==$num_columns) {
 		echo "\t</tr>\n\t<tr>\n";
 		$i=0;
 	}
-if ($developer!=1){
-	echo "<td style=\"padding:$padding\px;\">\r\n<a href=\"$sciezka\" data-lightbox=\"roadtrip\">\r\n";
-	echo "<img style=\"border: $border\px solid; border-radius: $border_radius px; max-width:300px; width:100%; height:auto; margin-left:auto; margin-right:auto; display:table; \" src=\"$sciezka_thumb\"  alt=\"\"/></a><br>\r\n<div style=\"text-align:center\">\n \t\t</td>\n";
-	}
-	else
-	echo "\t\t<td>\n\t\t\t<a href=\"$sciezka\" >";
-	echo "<img src=\"$sciezka_thumb\" /></a>\n\t\t</td>\n";
-	{
-
-	}
+	echo "\t\t<td>\n\t\t\t<a href=\"$sciezka\" data-lightbox=\"roadtrip\" ><img src=\"$sciezka_thumb\" /></a>\n\t\t</td>\n";
 	$i++; 
 	}
 }
-
 echo "\t</tr>\r\n</table>\r\n</center>\r\n</div>\r\n";
 }}
 
@@ -169,17 +138,13 @@ $page_content = $row['content'];
 $section_color = $row['section_color'];
 $page_content = html_entity_decode($page_content);
 $page_content = nl2br($page_content, true);
-global $developer;
-if ($developer!=1){
-	$divin='<div style="background-color:'.$section_color.'; color:black; width:100%; padding: 0px 0;">';
-	$divout='</div>';
-} else {
-	$divin="\r";
-	$divout="\r";
-}
+
+	$divin="<div class=\"fr-view\">";
+	$divout="</div>";
+
 
 echo<<<END
-$divin\t $page_content $divout \n
+\t$divin\n\t\t $page_content \n\t$divout \n
 END;
 }}
 
@@ -216,16 +181,10 @@ mysqli_close($con);
 		$section_type=$row['section_type'];
 		$section_color=$row['section_color'];
 		if ($section_type=="html") { 
-			if($developer!=1){
-			echo "<div style=\"background-color:$section_color;\" z-index:0;\"  >";
-			}
-		if($developer!=1){
-			$arcicle_in="<article style=\"padding:20px 0; margin:0;\" class=\"fr-view\" >\n";
-			$article_out="</article>\n";
-		} else {
+
 			$article_in="<article class=\"fr-view\">\n";
 			$article_out="</article>\n";
-		}
+
 			echo $article_in;
 			echo "\t".$content."\n";
 			echo $article_out;
@@ -234,19 +193,13 @@ mysqli_close($con);
 			show_gallery($id, $section_color);
 		}
 		else if ($section_type=="code") {
-			if($developer!=1){
-			$code_in="<div style=\"background-color:$section_color; \" >\n";
-			$code_out="</div>\n";
-			}else {
 			$code_in="";
 			$code_out="";
-		}
 			echo $code_in;
 			$code=stripslashes($code); 
 			$code='?>'.$code;
 			eval($code);
 			echo "\n".$code_out;
 		}
-	}
-}}
+		}}}
 ?>

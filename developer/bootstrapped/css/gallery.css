@@ -1,0 +1,18 @@
+.gallery table tr td img {
+	width:90%;
+	height: auto;
+	border-radius:10px;
+}
+
+.gallery table tr td {
+	width:300px;
+	height:auto;
+}
+
+.gallery table{
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+

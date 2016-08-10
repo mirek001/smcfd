@@ -31,11 +31,11 @@ $section_color = $row['section_color'];
     <?php //echo '<label >'.lang('type_page_desc').': </label>';?>
  		<?php //echo '<textarea class="form-control" name="desc" rows="3" placeholder="'.lang('desc_for_robots').'" >'.$page_desc.'</textarea>'; ?>
  		</div>
- 		<div class="form-group" style="max-height:500px;">
+ 		<div class="form-group" style="max-height: <?php echo $CONFIG['editor_height']; ?>px;">
 
           <?php echo '<label >'.$_SESSION['lg_content'].': </label>';?>
 
-          <textarea NAME="content" class="form-control" style="font-size:20px; height: 500px;" name="data-editor" data-editor="php"  COLS=100 ><?php echo $page_content;?></textarea>
+          <textarea NAME="content" class="form-control" style="font-size:20px; height: <?php echo $CONFIG['editor_height']; ?>px;" name="data-editor" data-editor="php"  COLS=100 ><?php echo $page_content;?></textarea>
 
       	</div>
       <div style="text-align:center;">

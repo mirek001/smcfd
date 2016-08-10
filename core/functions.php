@@ -169,7 +169,7 @@ $con = mysqli_connect($_SESSION['HOST'], $_SESSION['LOGIN'], $_SESSION['PASSWD']
 $res = $con->query("SELECT * FROM site_map WHERE cat_id = $id ORDER BY position");
 mysqli_close($con);
 
-	if ($res==FALSE) { // Jeżeli baza stron jest pusta to pokazuje przycisk "Zaloguj i stwórz stronę"
+	if ($res==FALSE) { // If database is empty, this IF show "Login and create your page" button.
 		echo '<center><a class="btn btn-default" href="system.php" role="button">'.$_SESSION['lg_login_and_create'].'</a></center>';
                 exit();
 	}

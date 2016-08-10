@@ -7,7 +7,7 @@ if(!isset($_SESSION))
 require_once 'mysql_data.php';
 require_once 'load_lang.php';
 require_once 'load_settings.php';
-
+require_once 'config.php';
 ?>
 
 <?php

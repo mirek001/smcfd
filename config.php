@@ -11,4 +11,8 @@ $CONFIG['page_type']='classic'; # classic - for classic site; ops - for one page
 $CONFIG['gallery_numcolumns']=3;
 
 
+
+//////CODE EDITOR CONFIG
+$CONFIG['editor_height']=500;
+
 ?>

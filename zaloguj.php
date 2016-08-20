@@ -24,6 +24,7 @@ require_once 'mysql_data.php';
 	{
 		$login = $_POST['login'];
 		$haslo = $_POST['haslo'];
+		$app = $_POST['app'];
 		
 		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
 		if ($res = @$con->query(
@@ -45,7 +46,9 @@ require_once 'mysql_data.php';
 						system("wget http://update.sitemapcms.com/last.zip");
 						system("unzip -o last.zip");
 						unlink("last.zip");
-					header('Location: system.php');
+					if ($app==editor){
+						header('Location: editor/index.php');
+					} else	header('Location: system.php');
 						$con->close();
 					exit();
 				} else {

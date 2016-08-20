@@ -20,7 +20,9 @@
 </div>
 
 <section class="container-fluid" >
+<div class="container" style="width:95%; padding-top:30px; padding-bottom:30px">
 <?php require_once './core/page.php';?>
+</div>
 </section>
 
 <footer class="container-fluid">

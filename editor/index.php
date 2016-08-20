@@ -1,3 +1,43 @@
+<?php
+if(!isset($_SESSION)) 
+{ 
+  session_start(); 
+} 
+//require_once 'functions.php';
+require_once '../mysql_data.php';
+require_once '../load_lang.php';
+require_once '../load_settings.php';
+require_once '../config.php';
+?>
+
+<?php
+require_once '../functions.php';
+
+  if (!isset($_COOKIE['emgiee']))
+  {
+    header('Location: ../login.php?app=editor');
+    //exit();
+  }
+  else {
+  $con = mysqli_connect($_SESSION['HOST'], $_SESSION['LOGIN'], $_SESSION['PASSWD'], $_SESSION['DB']);
+  
+  if ($con->connect_errno!=0)
+  {
+    echo "Error: ".$con->connect_errno;
+  }
+  else
+  {
+    $cookie = $_COOKIE['emgiee'];
+    $res = @$con->query("SELECT * FROM users WHERE cookie= $cookie");
+      $user = mysqli_fetch_array($res);
+          $_SESSION['id']= $user['id'];    
+  }
+}
+?>
+
+
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -10,8 +50,8 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 
 <frameset cols="15%,*">
-<frame src="tree.php" name="tree">
-<frame src="edit.php" name="edit">
+<?php echo '<frame src="'.$CONFIG['page_url'].'/editor/tree.php" name="tree">';?>
+<?php echo '<frame src="'.$CONFIG['page_url'].'/editor/edit.php" name="edit">';?>
 <noframes>
 </head>
 <body>

@@ -4,6 +4,8 @@ require_once 'functions.php';
 require_once 'mysql_data.php';
 require_once 'load_lang.php';
 
+$app=$_GET['app'];
+
 ?>
 
 <!DOCTYPE HTML>
@@ -31,6 +33,7 @@ require_once 'load_lang.php';
       <?php echo '<input type="password" name="haslo" class="form-control" id="inputPassword3" placeholder="'.$_SESSION['lg_passwd'].'" required>'; ?>
     </div>
   </div>
+  <?php echo '<input type="hidden" name="app" value="'.$app.'">';?>
   <div class="form-group">
 <?php
   if(isset($_SESSION['blad'])) {  

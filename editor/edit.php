@@ -1,5 +1,5 @@
 <?php
-$dane = "\n\n\n\tWelcome in Site Map CMS file editor.\n\n\tChoose file from tree to edit.";
+$dane = "\n\n\n\tWelcome in Site Map CMS file editor.\n\n\tChoose file from tree to edit. \n\n You have to be careful. Only files in the folder \"developer\", are not updated. \nIf you need to change a function, copy it to the directory of your project,\nit will be loaded instead of the original. You can copy all the files from the \"core\" \nto your directory of your project, you will have a guarantee that there will never \nbe changed, but it will never be updated.";
 $note = "Choose file from tree";
 if (isset($_GET['file'])){
 $file = $_GET['file'];
@@ -11,29 +11,31 @@ $dane = ob_get_contents();
 ob_end_clean();
 header('Content-type: text/html');
 if ($action==1){
-    $note="Otwarto plik $file";
+    $note="Opened file $file";
 } else if ($action==2) {
     $note="Changes saved in file $file";
 } else if ($action==3) {
     $note="File was reloaded without changes $file";
 }
 }
-
-//header('Content-type: text/plain');
-//header('Content-type: application/x-httpd-php-source');
-//echo file_get_contents("../index.php");
-//header('Content-type: text/html');
-//highlight_file('../index.php')
-
-
-//$homepage = file_get_contents('../system.php', FILE_USE_INCLUDE_PATH);
-//echo $homepage;
-//var_dump($homepage);
-
-
 ?>
 
-
+<?php
+$plik = "$file";
+$info = pathinfo($plik);
+$extension = $info['extension'];
+if ($extension=='php'){
+    $file_type="php";
+} else if ($extension=='js'){
+    $file_type="javascript";
+} else if ($extension=='html'){
+    $file_type="html";
+} else if ($extension=='css'){
+    $file_type="css";
+} else if ($extension=='sql'){
+    $file_type="sql";
+} else $file_type="html";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,12 +84,12 @@ if ($action==1){
     </div>
 </div>
 <div class="container-fluid" style="height:90% ; min-width: 100%; float:left; display:block;">
-<textarea style="width:auto; height:90% ;" id="editor" class="form-control" NAME="content" name="data-editor" data-editor="php"  COLS=40 ROWS=6><?php echo $dane; ?></textarea>
+<?php echo '<textarea style="width:auto; height:90% ;" id="editor" class="form-control" NAME="content" name="data-editor" data-editor="'.$file_type.'"  COLS=40 ROWS=6>'.$dane.'</textarea>';?>
 </div>
 <?php echo '<input type="hidden" name="file" value="'.$file.'">';?>
 </form>
 <div class="container-fluid" style="min-height:50px; min-width: 100%; background-color:#black; color:white;float:left; display:block;">
-<center>Site Map CMS Editor - powered by ACE Editor</center><center>
+<center>Site Map CMS Editor v. 1.1.0 - powered by ACE Editor</center>
 </div>
 <script type="../text/javascript" src="js/bootstrap.js"></script>
 </body>
@@ -118,6 +120,8 @@ if ($action==1){
             editor.getSession().setMode("ace/mode/" + mode);
             //editor.setKeyboardHandler("ace/keyboard/vim");
             editor.setTheme("ace/theme/xcode");
+            editor.resize();
+            editor.getSession().setUseWrapMode(true);
             //editor.setTheme("ace/theme/twilight");
             
             // copy back to textarea on form submit...

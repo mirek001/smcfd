@@ -42,6 +42,11 @@
 
 
       <ul class="nav navbar-nav navbar-right">
+      <?php 
+      if ($CONFIG['developer_mode']==1){
+        echo '<li><a href="editor/index.php" target="_blank">'.$_SESSION['lg_file_editor'].'</a></li>';
+        } 
+      ?>      
         <?php include 'license_button.php';?>
         <?php include 'update_button.php';?>
         <li><a href="index.php" target="_blank"><?php echo $_SESSION['lg_preview']?></a></li>

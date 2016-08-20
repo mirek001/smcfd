@@ -9,7 +9,7 @@ $keyl = strlen($key);
 
 
 if ($keyl == 22){
-	echo '<li><a href="system.php?page=license">'.$_SESSION['lg_license'].'</a></li>';
+	echo '<li><a href="system.php?page=license_page">'.$_SESSION['lg_license'].'</a></li>';
 }
 else  {
 	echo '<li  class="btn-primary" ><a href="system.php?page=license_page" style="color:white;">'.$_SESSION['lg_license'].'  <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></li>';

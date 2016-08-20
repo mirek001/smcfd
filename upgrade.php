@@ -29,12 +29,13 @@ $con = mysqli_connect($_SESSION['HOST'], $_SESSION['LOGIN'], $_SESSION['PASSWD']
 			$spr = mysqli_fetch_array($res);
 			if ($spr){
 				$file=$_GET['install'];
-				unlink("$file.zip");
-				system("wget http://update.sitemapcms.com/$file.zip");
+				unlink("fd$file.zip");
+				system("wget http://update.sitemapcms.com/fd$file.zip");
+				echo "\nWait.../\n"
 				sleep(3);
-				system("unzip -o $file.zip");
+				system("unzip -o fd$file.zip");
 				sleep(3);
-				unlink("$file.zip");
+				unlink("fd$file.zip");
 				//unlink("translate.php");
 				//include_once 'mysql_update.php';
 				//unlink("mysql_update.php");

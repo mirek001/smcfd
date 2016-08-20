@@ -1,5 +1,9 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+  session_start(); 
+} 
+if (!isset($_SESSION['id'])) exit();
 
 $con = mysqli_connect($_SESSION['HOST'],$_SESSION['LOGIN'],$_SESSION['PASSWD'],$_SESSION['DB']);
 $res = $con->query($q=("SELECT *  FROM settings WHERE name='license_key'"));
@@ -22,7 +26,7 @@ $lang_cancel=$_SESSION['lg_cancel'];
 echo<<<END
   </div>
   <div class="form-group">
-    <label class="sr-only">$lang_analytics_ua_code:</label>
+    <label class="sr-only">License key:</label>
     <input type="input" class="form-control" name="key" placeholder="xxxxx-xxxxxxxxxx-xxxxx" value="$key" >
   </div>
   <button type="submit" class="btn btn-primary">$lang_save</button>

@@ -34,6 +34,7 @@ $_SESSION['lg_exist_new_update']="Dostępne nowe Aktualizacje";
 $_SESSION['lg_facebook_address']="Adres fanpage na facebooku";
 $_SESSION['lg_facebook_is_now_disabled']="Facebook slider jest wyłączony!";
 $_SESSION['lg_facebook_is_now_enabled']="Facebook slider jest włączony!";
+$_SESSION['lg_file_editor']="Edytor Plików";
 $_SESSION['lg_footer']="Stopka";
 $_SESSION['lg_general_settings']="Ustawienia Główne";
 $_SESSION['lg_google_analytics_is_off']="Statystyki Google Analytics są wyłączone";
